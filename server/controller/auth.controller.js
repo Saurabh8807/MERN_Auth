@@ -5,7 +5,7 @@ import { errorHandler } from "../utils/error.js";
 export const signup = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
-
+    console.log("username, email ===>", username, email)
     // Validate input
     if (!username || !email || !password) {
       return next(errorHandler(400, "All fields are required"));
@@ -19,6 +19,7 @@ export const signup = async (req, res, next) => {
       message: "User created successfully",
     });
   } catch (error) {
+    console.log("error ===>", error)
     if (error.code === 11000) {
       console.log(error)
       // Duplicate key error
